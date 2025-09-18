@@ -131,7 +131,7 @@ var mouse = {
        y: 0
    },
 
-   cof: 0.10,
+   cof: 0.010,
    gazeRange: {
        x: 10,
        y: 10,
