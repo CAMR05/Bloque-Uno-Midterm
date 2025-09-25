@@ -68,8 +68,8 @@ const loader = new THREE.TextureLoader(manager);
 const woodTexture = {
    albedo: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png'),
    ao: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-ao.png'),
-   metalness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-metallic.psd'),
-   normal: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-normal-dx.png'),
+   metalness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-metal.png'),
+   normal: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-normal.png'),
    roughness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-roughness.png'),
    //displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
 };
@@ -78,7 +78,7 @@ const redPlaidTexture = {
    albedo: loader.load('./assets/texturas/red-plaid-unity/red-plaid_albedo.png'),
    ao: loader.load('./assets/texturas/red-plaid-unity/red-plaid_ao.png'),
    metalness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_metallic.psd'),
-   normal: loader.load('./assets/texturas/red-plaid-unity/red-plaid_normal-dx.png'),
+   normal: loader.load('./assets/texturas/red-plaid-unity/red-plaid_normal-ogl.png'),
    roughness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_roughness.png'),
    //displacement: loader.load('./assets/texturas/red-plaid-unity/red-plaid_displacement.png'),
 };
@@ -88,13 +88,15 @@ var redPlaidMaterial;
 
 function createMaterial() {
    woodMaterial = new THREE.MeshStandardMaterial({
-       map: woodTexture.albedo,
+       map: woodTexture.metalness,
        aoMap: woodTexture.ao,
        metalnessMap: woodTexture.metalness,
        normalMap: woodTexture.normal,
        roughnessMap: woodTexture.roughness,
        //displacementMap: tex.displacement,
        //displacementScale: 0.4,
+       metalness: 0.5,
+       roughness: 0.5,
        side: THREE.FrontSide,
        // wireframe: true,
    });
@@ -109,6 +111,7 @@ function createMaterial() {
        roughnessMap: redPlaidTexture.roughness,
        //displacementMap: redPlaidTexture.displacement,
        //displacementScale: 0.4,
+       metalness: 0.5,
        side: THREE.FrontSide,
        // wireframe: true,
    });
