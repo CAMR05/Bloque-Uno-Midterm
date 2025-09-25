@@ -190,23 +190,13 @@ function animate() {
     renderer.render(scene, camera);
 }
 canvas.addEventListener("mousedown", function () {
-        gsap.to(mesh.position,
+        gsap.to(mesh.scale,
             {
-                x:0.5,
+                x:2.5,
                 y:2.5,
                 duration:3, //segundos
-                ease:"sine.inOut",
-                onComplete:function() {
-                    gsap.to(
-                        mesh.position,
-                        {
-                            x:8,
-                            y:-3,
-                            duration:3,
-                            ease:"sine.inOut",
-                        }
-                    )
-                }
+                ease:"bounce.inOut",
+                
             }
         );
 });
