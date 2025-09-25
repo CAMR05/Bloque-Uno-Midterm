@@ -199,7 +199,7 @@ canvas.addEventListener("mousedown", function () {
                 y:setSizeY,
                 z:setSizeZ,
                 duration:3, //segundos
-                ease:"bounce.inOut",
+                ease:"bounce.out",
                 
             }
         );
