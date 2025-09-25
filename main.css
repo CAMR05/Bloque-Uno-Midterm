@@ -14,12 +14,13 @@
     color: aqua;
 }
 
+
+
 #boton1{
     position: absolute;
     top: 10%;
     left: 0;
-    color:rgb(8, 177, 255);
-    background-color: rgb(175, 0, 0);
+    background-image: url('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png');
     padding: 50px 50px;
 }
 
@@ -27,8 +28,7 @@
     position: absolute;
     top: 10%;
     left: 10%;
-    color:rgb(102, 60, 141);
-    background-color: rgb(0, 167, 8);
+    background-image: url('./assets/texturas/red-plaid-unity/red-plaid_albedo.png');
     padding: 50px 50px;
 }
 
