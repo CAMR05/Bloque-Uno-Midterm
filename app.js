@@ -113,8 +113,20 @@ function createMaterial() {
        // wireframe: true,
    });
 
-   //mesh.material = redPlaidMaterial;
+   mesh.material = redPlaidMaterial;
 }
+
+//5. Añadimos botones al JS
+const boton1 = document.getElementById("boton1");
+boton1.addEventListener("mousedown", function() {
+   mesh.material = woodMaterial;
+});
+
+const boton2 = document.getElementById("boton2");
+boton2.addEventListener("mousedown", function() {
+   mesh.material = redPlaidMaterial;
+});
+
 
 //// B) Rotación al scrollear.
 // 1. Crear un objeto con la data referente al SCROLL para ocuparla en todos lados.
