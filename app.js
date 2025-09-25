@@ -190,10 +190,14 @@ function animate() {
     renderer.render(scene, camera);
 }
 canvas.addEventListener("mousedown", function () {
+   const setSizeX = mesh.scale.x + 1;
+   const setSizeY = mesh.scale.y + 1;
+   const setSizeZ = mesh.scale.z + 1;
         gsap.to(mesh.scale,
             {
-                x:2.5,
-                y:2.5,
+                x:setSizeX,
+                y:setSizeY,
+                z:setSizeZ,
                 duration:3, //segundos
                 ease:"bounce.inOut",
                 
