@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
 //const geo = new THREE.CylinderGeometry(1,1,3,30);
-const geo = new THREE.CylinderGeometry(1,1,4,30);
+const geo = new THREE.CylinderGeometry(1,1,3,30);
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
