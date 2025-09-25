@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
 //const geo = new THREE.CylinderGeometry(1,1,3,30);
-const geo = new THREE.SphereGeometry(1,30,30);
+const geo = new THREE.CylinderGeometry(1,1,4,30);
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
@@ -65,31 +65,55 @@ manager.onError = function (url) {
 const loader = new THREE.TextureLoader(manager);
 
 // 3. Cargamos texturas guardadas en el folder del proyecto.
-const tex = {
-   albedo: loader.load('./assets/texturas/dirty-wicker-weave1-ue/dirty-wicker-weave1-albedo.png'),
-   ao: loader.load('./assets/texturas/dirty-wicker-weave1-ue/dirty-wicker-weave1-ao.png'),
-   metalness: loader.load('./assets/texturas/dirty-wicker-weave1-ue/dirty-wicker-weave1-metallic.psd'),
-   normal: loader.load('./assets/texturas/dirty-wicker-weave1-ue/dirty-wicker-weave1-normal-dx.png'),
-   roughness: loader.load('./assets/texturas/dirty-wicker-weave1-ue/dirty-wicker-weave1-roughness.png'),
+const woodTexture = {
+   albedo: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png'),
+   ao: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-ao.png'),
+   metalness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-metallic.psd'),
+   normal: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-normal-dx.png'),
+   roughness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-roughness.png'),
    //displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
 };
+
+const redPlaidTexture = {
+   albedo: loader.load('./assets/texturas/red-plaid-unity/red-plaid_albedo.png'),
+   ao: loader.load('./assets/texturas/red-plaid-unity/red-plaid_ao.png'),
+   metalness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_metallic.psd'),
+   normal: loader.load('./assets/texturas/red-plaid-unity/red-plaid_normal-dx.png'),
+   roughness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_roughness.png'),
+   //displacement: loader.load('./assets/texturas/red-plaid-unity/red-plaid_displacement.png'),
+};
 // 4. Definimos variables y la función que va a crear el material al cargar las texturas.
-var pbrMaterial;
+var woodMaterial;
+var redPlaidMaterial;
 
 function createMaterial() {
-   pbrMaterial = new THREE.MeshStandardMaterial({
-       map: tex.albedo,
-       aoMap: tex.ao,
-       metalnessMap: tex.metalness,
-       normalMap: tex.normal,
-       roughnessMap: tex.roughness,
+   woodMaterial = new THREE.MeshStandardMaterial({
+       map: woodTexture.albedo,
+       aoMap: woodTexture.ao,
+       metalnessMap: woodTexture.metalness,
+       normalMap: woodTexture.normal,
+       roughnessMap: woodTexture.roughness,
        //displacementMap: tex.displacement,
        //displacementScale: 0.4,
        side: THREE.FrontSide,
        // wireframe: true,
    });
 
-   mesh.material = pbrMaterial;
+   mesh.material = woodMaterial;
+
+   redPlaidMaterial = new THREE.MeshStandardMaterial({
+       map: redPlaidTexture.albedo,
+       aoMap: redPlaidTexture.ao,
+       metalnessMap: redPlaidTexture.metalness,
+       normalMap: redPlaidTexture.normal,
+       roughnessMap: redPlaidTexture.roughness,
+       //displacementMap: redPlaidTexture.displacement,
+       //displacementScale: 0.4,
+       side: THREE.FrontSide,
+       // wireframe: true,
+   });
+
+   //mesh.material = redPlaidMaterial;
 }
 
 //// B) Rotación al scrollear.
