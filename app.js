@@ -17,7 +17,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
-const geo = new THREE.ConeGeometry(1,2,100);
+const geo = new THREE.CylinderGeometry(1,1,3,30);
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
@@ -65,25 +65,25 @@ const loader = new THREE.TextureLoader(manager);
 
 // 3. Cargamos texturas guardadas en el folder del proyecto.
 const tex = {
-   albedo: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png'),
-   ao: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-ao.png'),
-   metalness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-metallic.png'),
-   normal: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-normal.png'),
-   roughness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-roughness.png'),
-   displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
+   albedo: loader.load('./assets/texturas/red-plaid-unity/red-plaid_albedo.png'),
+   ao: loader.load('./assets/texturas/red-plaid-unity/red-plaid_ao.png'),
+   metalness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_metallic.psd'),
+   normal: loader.load('./assets/texturas/red-plaid-unity/red-plaid_normal-ogl.png'),
+   roughness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_roughness.png'),
+   //displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
 };
 // 4. Definimos variables y la función que va a crear el material al cargar las texturas.
 var pbrMaterial;
 
 function createMaterial() {
    pbrMaterial = new THREE.MeshStandardMaterial({
-       map: tex.albedo,
+       map: tex.normal,
        aoMap: tex.ao,
        metalnessMap: tex.metalness,
        normalMap: tex.normal,
        roughnessMap: tex.roughness,
-       displacementMap: tex.displacement,
-       displacementScale: 0.4,
+       //displacementMap: tex.displacement,
+       //displacementScale: 0.4,
        side: THREE.FrontSide,
        // wireframe: true,
    });
@@ -198,7 +198,7 @@ canvas.addEventListener("mousedown", function () {
                 x:setSizeX,
                 y:setSizeY,
                 z:setSizeZ,
-                duration:3, //segundos
+                duration:2, //segundos
                 ease:"bounce.inOut",
                 
             }
