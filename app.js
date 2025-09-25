@@ -88,14 +88,14 @@ var redPlaidMaterial;
 
 function createMaterial() {
    woodMaterial = new THREE.MeshStandardMaterial({
-       map: woodTexture.metalness,
+       map: woodTexture.albedo,
        aoMap: woodTexture.ao,
        metalnessMap: woodTexture.metalness,
        normalMap: woodTexture.normal,
        roughnessMap: woodTexture.roughness,
        //displacementMap: tex.displacement,
        //displacementScale: 0.4,
-       metalness: 0.5,
+       metalness: 3.5,
        roughness: 0.5,
        side: THREE.FrontSide,
        // wireframe: true,
