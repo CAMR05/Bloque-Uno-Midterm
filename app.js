@@ -17,7 +17,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
-const geo = new THREE.ConeGeometry();
+const geo = new THREE.ConeGeometry(1,2,100);
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
@@ -65,12 +65,12 @@ const loader = new THREE.TextureLoader(manager);
 
 // 3. Cargamos texturas guardadas en el folder del proyecto.
 const tex = {
-   albedo: loader.load('./assets/texturas/animal-fur/stylized-animal-fur_albedo.png'),
-   ao: loader.load('./assets/texturas/animal-fur/stylized-animal-fur_ao.png'),
-   metalness: loader.load('./assets/texturas/animal-fur/stylized-animal_fur-metallic.png'),
-   normal: loader.load('./assets/texturas/animal-fur/stylized-animal-fur_normal.png'),
-   roughness: loader.load('./assets/texturas/animal-fur/stylized-animal-fur_roughness.png'),
-   displacement: loader.load('./assets/texturas/animal-fur/stylized-animal-fur_displacement.png'),
+   albedo: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png'),
+   ao: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-ao.png'),
+   metalness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-metallic.png'),
+   normal: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-normal.png'),
+   roughness: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-roughness.png'),
+   displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
 };
 // 4. Definimos variables y la función que va a crear el material al cargar las texturas.
 var pbrMaterial;
