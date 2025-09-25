@@ -189,5 +189,25 @@ function animate() {
   camera.lookAt(mesh.position);
     renderer.render(scene, camera);
 }
-
+canvas.addEventListener("mousedown", function () {
+        gsap.to(mesh.position,
+            {
+                x:0.5,
+                y:2.5,
+                duration:3, //segundos
+                ease:"sine.inOut",
+                onComplete:function() {
+                    gsap.to(
+                        mesh.position,
+                        {
+                            x:8,
+                            y:-3,
+                            duration:3,
+                            ease:"sine.inOut",
+                        }
+                    )
+                }
+            }
+        );
+});
 animate();
