@@ -38,7 +38,14 @@ rimLight.position.set(-7, -3, -7);
 scene.add(rimLight);
 
 
+document.addEventListener("keydown", (event) => {
+  const keyName = event.key;
 
+  if (keyName === "w") {
+    wireframe: true;
+    return;
+  }
+});
 ///////// EN CLASE.
 
 //// A) Cargar múltiples texturas.
