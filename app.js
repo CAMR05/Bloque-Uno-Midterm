@@ -133,9 +133,10 @@ boton2.addEventListener("mousedown", function() {
 //6. Cambiar entre modo wireframe y modo sólido con la tecla "w".
 
 document.addEventListener("keydown", (event) => {
-  const keyName = event.key;
 
-  if (keyName === "w") {
+  let key=event.key;
+
+  if (key === "w") {
     mesh.material.wireframe = !mesh.material.wireframe;
     return;
   }
