@@ -38,14 +38,7 @@ rimLight.position.set(-7, -3, -7);
 scene.add(rimLight);
 
 
-document.addEventListener("keydown", (event) => {
-  const keyName = event.key;
 
-  if (keyName === "w") {
-    wireframe: true;
-    return;
-  }
-});
 ///////// EN CLASE.
 
 //// A) Cargar múltiples texturas.
@@ -135,6 +128,17 @@ boton1.addEventListener("mousedown", function() {
 const boton2 = document.getElementById("boton2");
 boton2.addEventListener("mousedown", function() {
    mesh.material = redPlaidMaterial;
+});
+
+//6. Cambiar entre modo wireframe y modo sólido con la tecla "w".
+
+document.addEventListener("keydown", (event) => {
+  const keyName = event.key;
+
+  if (keyName === "w") {
+    mesh.material.wireframe = !mesh.material.wireframe;
+    return;
+  }
 });
 
 
