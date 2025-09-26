@@ -137,8 +137,9 @@ document.addEventListener("keydown", (event) => {
   let key=event.key;
 
   if (key === "w") {
-    mesh.material.wireframe = !mesh.material.wireframe;
-    return;
+    mesh.material.wireframe = true;
+  } else {
+    mesh.material.wireframe = false;
   }
 });
 
