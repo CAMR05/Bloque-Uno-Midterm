@@ -12,6 +12,16 @@ canvas.height = window.innerHeight;
 const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(canvas.width, canvas.height);
+ window.addEventListener("resize", function () {
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    renderer.setSize(canvas.width, canvas.height);
+    camera.aspect = canvas.width / canvas.height;
+    camera.updateProjectionMatrix();
+
+renderer.render(scene, camera);
+});
 renderer.setClearColor("#003506");
 const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1, 1000);
 
@@ -257,3 +267,5 @@ canvas.addEventListener("mousedown", function () {
         );
 });
 animate();
+
+
