@@ -12,7 +12,7 @@ canvas.height = window.innerHeight;
 const scene = new THREE.Scene();
 const renderer = new THREE.WebGLRenderer({ canvas: canvas });
 renderer.setSize(canvas.width, canvas.height);
-renderer.setClearColor("#0a0c2c");
+renderer.setClearColor("#00650c");
 const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1, 1000);
 
 // 3.1 Configurar mesh.
@@ -183,7 +183,7 @@ var mouse = {
        y: 0
    },
 
-   cof: 0.010,
+   cof: 0.05,
    gazeRange: {
        x: 10,
        y: 10,
