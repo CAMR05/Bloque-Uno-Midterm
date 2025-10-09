@@ -29,9 +29,10 @@
     position: absolute;
     top: 10%;
     left: 10%;
-    background-image: url('./assets/texturas/red-plaid-unity/red-plaid_albedo.png');
+    background-image: url('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_albedo.png');
     padding: 50px 50px;
 }
+
 
 #lienzo {
     position: fixed;

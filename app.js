@@ -19,7 +19,7 @@ const camera = new THREE.PerspectiveCamera(45, canvas.width / canvas.height, 0.1
 // 3.1 Configurar mesh.
 //const geo = new THREE.TorusKnotGeometry(1, 0.35, 128, 5, 2);
 //const geo = new THREE.CylinderGeometry(1,1,3,30);
-const geo = new THREE.CylinderGeometry(1,1,3,30);
+const geo = new THREE.SphereGeometry();
 
 const material = new THREE.MeshStandardMaterial({
     color: "#ffffff",
@@ -30,11 +30,11 @@ scene.add(mesh);
 mesh.position.z = -7;
 
 // 3.2 Crear luces.
-const frontLight = new THREE.PointLight("#fffff", 300, 100);
+const frontLight = new THREE.PointLight("#ffffff", 300, 100);
 frontLight.position.set(7, 3, 3);
 scene.add(frontLight);
 
-const rimLight = new THREE.PointLight("#3e0077", 50, 100);
+const rimLight = new THREE.PointLight("#ffffff", 50, 100);
 rimLight.position.set(-7, -3, -7);
 scene.add(rimLight);
 
@@ -65,6 +65,8 @@ manager.onError = function (url) {
 // 2. "Texture loader" para nuestros assets.
 const loader = new THREE.TextureLoader(manager);
 
+const cubeTexloader = new THREE.CubeTextureLoader(manager);
+
 // 3. Cargamos texturas guardadas en el folder del proyecto.
 const woodTexture = {
    albedo: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-albedo.png'),
@@ -75,50 +77,70 @@ const woodTexture = {
    //displacement: loader.load('./assets/texturas/bamboo-wood-semigloss-Unreal-Engine/bamboo-wood-semigloss-displacement.png'),
 };
 
-const redPlaidTexture = {
-   albedo: loader.load('./assets/texturas/red-plaid-unity/red-plaid_albedo.png'),
-   ao: loader.load('./assets/texturas/red-plaid-unity/red-plaid_ao.png'),
-   metalness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_metallic.psd'),
-   normal: loader.load('./assets/texturas/red-plaid-unity/red-plaid_normal-ogl.png'),
-   roughness: loader.load('./assets/texturas/red-plaid-unity/red-plaid_roughness.png'),
-   //displacement: loader.load('./assets/texturas/red-plaid-unity/red-plaid_displacement.png'),
+
+
+const cobbleTexture = {
+   albedo: loader.load('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_albedo.png'),
+   ao: loader.load('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_ao.png'),
+   metalness: loader.load('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_metallic.png'),
+   normal: loader.load('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_normal-dx.png'),
+   roughness: loader.load('./assets/texturas/chiseled-cobble-ue/chiseled-cobble-ue/chiseled-cobble_roughness.png'),
+   //displacement: loader.load('./assets/texturas/red-plaid-unity/red-plaid_preview.png'),
 };
+
+const envMap = cubeTexloader.load([
+   './assets/texturas/SaintPetersBasilica/negx.jpg',
+   './assets/texturas/SaintPetersBasilica/posx.jpg',
+   './assets/texturas/SaintPetersBasilica/negy.jpg',
+   './assets/texturas/SaintPetersBasilica/posy.jpg',
+   './assets/texturas/SaintPetersBasilica/negz.jpg',
+   './assets/texturas/SaintPetersBasilica/posz.jpg',
+
+]);
+
+scene.background = envMap;
+
+
 // 4. Definimos variables y la función que va a crear el material al cargar las texturas.
 var woodMaterial;
-var redPlaidMaterial;
+var cobbleMaterial;
 
 function createMaterial() {
    woodMaterial = new THREE.MeshStandardMaterial({
+      envMap: envMap,
        map: woodTexture.albedo,
        aoMap: woodTexture.ao,
-       metalnessMap: woodTexture.metalness,
+       //metalnessMap: woodTexture.metalness,
        normalMap: woodTexture.normal,
        roughnessMap: woodTexture.roughness,
        //displacementMap: tex.displacement,
        //displacementScale: 0.4,
-       metalness: 3.5,
-       roughness: 0.5,
+       metalness: 1.0,
+       roughness: 0.1,
        side: THREE.FrontSide,
        // wireframe: true,
    });
 
    mesh.material = woodMaterial;
 
-   redPlaidMaterial = new THREE.MeshStandardMaterial({
-       map: redPlaidTexture.albedo,
-       aoMap: redPlaidTexture.ao,
-       metalnessMap: redPlaidTexture.metalness,
-       normalMap: redPlaidTexture.normal,
-       roughnessMap: redPlaidTexture.roughness,
-       //displacementMap: redPlaidTexture.displacement,
+   cobbleMaterial = new THREE.MeshStandardMaterial({
+      envMap: envMap,
+       map: cobbleTexture.albedo,
+       aoMap: cobbleTexture.ao,
+       //metalnessMap: cobbleTexture.metalness,
+       normalMap: cobbleTexture.normal,
+       roughnessMap: cobbleTexture.roughness,
+       //displacementMap: cobbleTexture.displacement,
        //displacementScale: 0.4,
-       metalness: 0.5,
+       metalness: 0.9,
+       roughness: 0.1,
        side: THREE.FrontSide,
        // wireframe: true,
    });
 
-   mesh.material = redPlaidMaterial;
+   mesh.material = cobbleMaterial;
 }
+
 
 //5. Añadimos botones al JS
 const boton1 = document.getElementById("boton1");
@@ -128,8 +150,9 @@ boton1.addEventListener("mousedown", function() {
 
 const boton2 = document.getElementById("boton2");
 boton2.addEventListener("mousedown", function() {
-   mesh.material = redPlaidMaterial;
+   mesh.material = cobbleMaterial;
 });
+
 
 //6. Cambiar entre modo wireframe y modo sólido con la tecla "w".
 
