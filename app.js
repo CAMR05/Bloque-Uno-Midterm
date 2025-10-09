@@ -276,6 +276,15 @@ function updateCameraAspect() {
    camera.updateProjectionMatrix();
 }
 
+function handleResize() {
+   updateCanvasSize();
+   updateRenderer();
+   updateCameraAspect();
+}
+
+//window.addEventListener("resize", handleResize);
+
+
 window.addEventListener("resize", function() {
 updateCanvasSize();
 updateRenderer();
